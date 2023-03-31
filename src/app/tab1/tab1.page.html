@@ -1,17 +1,32 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
-    <ion-title>
-      Tab 1
-    </ion-title>
+    <ion-title> Characters </ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true">
   <ion-header collapse="condense">
     <ion-toolbar>
-      <ion-title size="large">Tab 1</ion-title>
+      <ion-title size="large">Characters</ion-title>
     </ion-toolbar>
   </ion-header>
 
-  <app-explore-container name="Tab 1 page"></app-explore-container>
+  <ion-list>
+    <ion-item *ngFor="let character of allCharacters">
+      <ion-avatar slot="start">
+        <img [src]="character.image" alt="" />
+      </ion-avatar>
+      <ion-label>
+        <h2>{{ character.name }}</h2>
+        <h3>Origin: {{ character.origin.name }}</h3>
+        <p>Type: {{ character.type }}</p>
+        <p>Status: {{ character.status}}</p>
+        <p>Species: {{ character.species}}</p>
+      </ion-label>
+    </ion-item>
+  </ion-list>
+
+  <ion-button expand="block" (click)="loadMoreCharacters()"
+    >Load More Characters</ion-button
+  >
 </ion-content>
